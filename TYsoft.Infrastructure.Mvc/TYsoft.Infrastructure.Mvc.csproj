@@ -72,14 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorize\AdminAuthorizeAttribute.cs" />
-    <Compile Include="Authorize\AdminIdentity.cs" />
     <Compile Include="Authorize\SimplePasswordAuthorizeAttribute.cs" />
-    <Compile Include="Authorize\ClientVisitAttribute.cs" />
-    <Compile Include="Authorize\MemberAuthorizeAttribute.cs" />
-    <Compile Include="Authorize\MemberIdentity.cs" />
-    <Compile Include="Authorize\PermissionAuthorizeAttribute.cs" />
-    <Compile Include="Authorize\PlatformIdentity.cs" />
     <Compile Include="Extension\EnumExtensions.cs" />
     <Compile Include="Extension\HtmlHelperExtensions.cs" />
     <Compile Include="Extension\MasterPageExtensions.cs" />

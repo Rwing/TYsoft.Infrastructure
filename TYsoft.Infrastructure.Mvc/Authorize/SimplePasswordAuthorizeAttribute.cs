@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace TYsoft.Infrastructure.Mvc.Authorize
 {
 	/// <summary>
-	/// 简单的验证，只有一个密码，保存在session
+	/// 简单的验证，只有一个密码，保存在session["SimplePasswordAuthorize"]
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
 	public class SimplePasswordAuthorizeAttribute : AuthorizeAttribute
@@ -30,7 +30,7 @@ namespace TYsoft.Infrastructure.Mvc.Authorize
 		protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
 		{
 			var result = new ContentResult();
-			result.Content = "您无权查看此目录或页面。<a href='" + _logOnUrl + "'>登录</a>";
+			result.Content = "你的密码有误，无权查看此目录或页面。<a href='" + _logOnUrl + "?returnUrl=" + System.Web.HttpUtility.UrlEncode(filterContext.HttpContext.Request.RawUrl) + "'>登录</a>";
 			filterContext.Result = result;
 		}
 
