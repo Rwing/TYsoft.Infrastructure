@@ -5,7 +5,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace TYsoft.Infrastructure.Utility
+namespace System
 {
 	public static class CryptographyExtensions
 	{

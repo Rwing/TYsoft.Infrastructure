@@ -5,11 +5,41 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace TYsoft.Infrastructure.Utility
+namespace System
 {
 	public static class PrimitiveTypeExtensions
 	{
 		#region String Extensions
+
+		public static string HtmlEncode(this string source)
+		{
+			return HttpUtility.HtmlEncode(source);
+		}
+
+		public static string HtmlDecode(this string source)
+		{
+			return HttpUtility.HtmlDecode(source);
+		}
+
+		public static string UrlEncode(this string source)
+		{
+			return HttpUtility.UrlEncode(source);
+		}
+
+		public static string UrlDecode(this string source)
+		{
+			return HttpUtility.UrlDecode(source);
+		}
+
+		public static string UrlEncode(this string source, bool isGb2312)
+		{
+			return HttpUtility.UrlEncode(source, Encoding.GetEncoding("gb2312"));
+		}
+
+		public static string UrlDecode(this string source, bool isGb2312)
+		{
+			return HttpUtility.UrlDecode(source, Encoding.GetEncoding("gb2312"));
+		}
 
 		public static string ToJavaScriptString(this string source)
 		{

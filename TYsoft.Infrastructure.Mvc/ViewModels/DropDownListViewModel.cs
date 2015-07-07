@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace TYsoft.Infrastructure.Mvc
@@ -41,6 +42,16 @@ namespace TYsoft.Infrastructure.Mvc
 				var result = Items.ConvertAll<SelectListItem>(Converter);
 				if (AllowEmpty)
 					result.Insert(0, new SelectListItem() { Text = "", Value = "" });
+				if (HttpContext.Current != null)
+				{
+					var select = HttpContext.Current.Request.QueryString[ControlName];
+					if (!string.IsNullOrWhiteSpace(select))
+					{
+						var single = result.SingleOrDefault(i => i.Value == select);
+						if (single != null)
+							single.Selected = true;
+					}
+				}
 				return result;
 			}
 		}

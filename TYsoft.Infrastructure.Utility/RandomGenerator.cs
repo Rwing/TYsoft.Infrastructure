@@ -31,6 +31,18 @@ namespace TYsoft.Infrastructure.Utility
 		}
 
 		/// <summary>
+		/// 返回从0到max的浮点数
+		/// </summary>
+		/// <param name="max"></param>
+		/// <returns></returns>
+		public static double RandomDouble(int max)
+		{
+			return random.NextDouble() * max;
+		}
+
+
+
+		/// <summary>
 		/// 与Random.Next同样用法
 		/// </summary>
 		/// <param name="max"></param>

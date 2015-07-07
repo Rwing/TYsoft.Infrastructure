@@ -1,13 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.Data.EF", "TYsoft.Infrastructure.Data.EF\TYsoft.Infrastructure.Data.EF.csproj", "{C6958A8F-B6DA-487B-879B-66BFC761AC5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.Mvc", "TYsoft.Infrastructure.Mvc\TYsoft.Infrastructure.Mvc.csproj", "{75E68747-C418-45D6-8B4D-9817B2E5AB55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.Utility", "TYsoft.Infrastructure.Utility\TYsoft.Infrastructure.Utility.csproj", "{1C5BA843-DB96-4E18-AB0F-029289EC8B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.Bootstrapper", "TYsoft.Infrastructure.Bootstrapper\TYsoft.Infrastructure.Bootstrapper.csproj", "{882FE8E3-B149-42D1-9629-79BB1590D4AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.IoC", "TYsoft.Infrastructure.IoC\TYsoft.Infrastructure.IoC.csproj", "{4A88ECCF-4E4B-4451-AF1C-5DE76E06C060}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{980F2C28-23D5-4576-9775-A2D33D5FD1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.DemoConsole", "TYsoft.Infrastructure.DemoConsole\TYsoft.Infrastructure.DemoConsole.csproj", "{7DC65AE4-298E-4EC5-9459-CF2774E5EAF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYsoft.Infrastructure.DemoMvc", "TYsoft.Infrastructure.DemoMvc\TYsoft.Infrastructure.DemoMvc.csproj", "{CFA4F71C-D157-48C5-81A9-AFF83D6ABF78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +37,28 @@ Global
 		{1C5BA843-DB96-4E18-AB0F-029289EC8B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C5BA843-DB96-4E18-AB0F-029289EC8B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C5BA843-DB96-4E18-AB0F-029289EC8B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{882FE8E3-B149-42D1-9629-79BB1590D4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882FE8E3-B149-42D1-9629-79BB1590D4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882FE8E3-B149-42D1-9629-79BB1590D4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882FE8E3-B149-42D1-9629-79BB1590D4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A88ECCF-4E4B-4451-AF1C-5DE76E06C060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A88ECCF-4E4B-4451-AF1C-5DE76E06C060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A88ECCF-4E4B-4451-AF1C-5DE76E06C060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A88ECCF-4E4B-4451-AF1C-5DE76E06C060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC65AE4-298E-4EC5-9459-CF2774E5EAF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC65AE4-298E-4EC5-9459-CF2774E5EAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC65AE4-298E-4EC5-9459-CF2774E5EAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC65AE4-298E-4EC5-9459-CF2774E5EAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA4F71C-D157-48C5-81A9-AFF83D6ABF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA4F71C-D157-48C5-81A9-AFF83D6ABF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA4F71C-D157-48C5-81A9-AFF83D6ABF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA4F71C-D157-48C5-81A9-AFF83D6ABF78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7DC65AE4-298E-4EC5-9459-CF2774E5EAF6} = {980F2C28-23D5-4576-9775-A2D33D5FD1C1}
+		{CFA4F71C-D157-48C5-81A9-AFF83D6ABF78} = {980F2C28-23D5-4576-9775-A2D33D5FD1C1}
 	EndGlobalSection
 EndGlobal
