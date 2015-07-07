@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using LightInject;
+//using LightInject;
 
 namespace TYsoft.Infrastructure.DemoMvc
 {
@@ -16,12 +16,12 @@ namespace TYsoft.Infrastructure.DemoMvc
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-			var container = new ServiceContainer();
-			container.RegisterControllers();
-			//register other services
-			container.Register<IFoo, Foo>(new PerScopeLifetime());
+			//var container = new ServiceContainer();
+			//container.RegisterControllers();
+			////register other services
+			//container.Register<IFoo, Foo>(new PerScopeLifetime());
 
-			container.EnableMvc();
+			//container.EnableMvc();
 		}
 	}
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using Bootstrap.Extensions.StartupTasks;
 
@@ -18,7 +19,7 @@ namespace TYsoft.Infrastructure.Bootstrapper
 		public static void Initialize()
 		{
 			Bootstrap.Bootstrapper.With.StartupTasks()
-			   .UsingThisExecutionOrder(s => s.First<RegisterMvcConfig>().Then<RegisterIoC>())
+			   .UsingThisExecutionOrder(s => s.First<RegisterIoC>())
 			   .Start();
 			//Bootstrap.Bootstrapper.With.SimpleInjector().UsingAutoRegistration().LookForTypesIn.ReferencedAssemblies().Start();
 		}

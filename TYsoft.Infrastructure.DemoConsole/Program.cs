@@ -14,7 +14,8 @@ namespace TYsoft.Infrastructure.DemoConsole
 		{
 			var container = new LightInject.ServiceContainer();
 			container.Register<IFoo, Foo>(new PerContainerLifetime());
-
+			container.Register<IFoo, Foo2>(new PerContainerLifetime());
+			//container.Register(typeof(IFoo<>), typeof(Foo<>));
 			var a = container.GetInstance<IFoo>();
 			Console.WriteLine(a.GetHashCode());
 			var b = container.GetInstance<IFoo>();
@@ -24,23 +25,18 @@ namespace TYsoft.Infrastructure.DemoConsole
 		}
 	}
 
+	public interface IFoo<T> { };
+	public class Foo<T> : IFoo<T> { };
+
 	public interface IFoo
 	{
-		DateTime GetDateTime();
 	}
 
 	public class Foo : IFoo
 	{
-		public DateTime Date{ get; set; }
+	}
 
-		public Foo()
-		{
-			Date = DateTime.Now;
-		}
-		
-		public DateTime GetDateTime()
-		{
-			return Date;
-		}
+	public class Foo2 : IFoo
+	{
 	}
 }

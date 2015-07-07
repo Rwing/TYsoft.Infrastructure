@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TYsoft.Infrastructure.IoC;
 
 
 namespace TYsoft.Infrastructure.Bootstrapper
@@ -18,16 +19,9 @@ namespace TYsoft.Infrastructure.Bootstrapper
 
 		public void Run()
 		{
-
-			var container = (ServiceContainer)IoCContainerManager.CurrentIoCContainer;
-			//container.RegisterControllers();
-			//container.RegisterAssembly("WA*.dll");
-			foreach (Assembly assembly in container.AssemblyLoader.Load("WA*.dll"))
-			{
-				container.RegisterAssembly(assembly, () => new PerRequestLifeTime());
-			}
-			container.Register<IDbContext, EFDbContext>(new PerScopeLifetime());
-			container.EnableMvc();
+			
+			var container = IoCContainerManager.CurrentIoCContainer;
+			container.Initialize();
 		}
 	}
 }
