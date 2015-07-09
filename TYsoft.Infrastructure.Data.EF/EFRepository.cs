@@ -47,7 +47,7 @@ namespace TYsoft.Infrastructure.Data.EF
 
 		public void Delete(Expression<Func<TEntity, bool>> predicate)
 		{
-
+			
 		}
 
 		public void Update(TEntity item)

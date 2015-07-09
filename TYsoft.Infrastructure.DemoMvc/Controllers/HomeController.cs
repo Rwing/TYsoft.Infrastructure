@@ -3,21 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TYsoft.Infrastructure.Data.EF;
-using TYsoft.Infrastructure.DemoDomain;
+using TYsoft.Infrastructure.Bussiness;
+using TYsoft.Infrastructure.Domain;
 
 namespace TYsoft.Infrastructure.DemoMvc.Controllers
 {
 	public class HomeController : Controller
 	{
-		public IDbContext DbContext { get; set; }
-		public IRepository<Test> Repository { get; set; }
+
+		public StudentService StudentService { get; set; }
 
 		public ActionResult Index()
 		{
-			var count = Repository.GetItems().Count();
-			return Content("sasdf" + count);
+			var student = StudentService.GetFirstStudentsWithClass();
+			return Content(string.Format("name:{0}, class:{1}", student.Name, student.Class.Title));
 		}
 
+		public ActionResult Add()
+		{
+			var student = new Student()
+			{
+				Name = "zhangsan",
+				Class = new Class()
+				{
+					Title = "3nian2ban"
+				}
+			};
+			StudentService.Add(student);
+			return Content("done");
+		}
+
+		public ActionResult Modify()
+		{
+			return View();
+		}
 	}
 }

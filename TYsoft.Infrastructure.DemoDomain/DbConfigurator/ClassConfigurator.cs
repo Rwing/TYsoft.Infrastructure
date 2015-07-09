@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TYsoft.Infrastructure.Data.EF;
+using TYsoft.Infrastructure.Domain;
 
 namespace TYsoft.Infrastructure.DemoDomain
 {
-	public class TestConfigurator : EntityTypeConfiguration<Test>, IDomainConfigurator
+	public class ClassConfigurator : EntityTypeConfiguration<Class>, IDomainConfigurator
 	{
-		public TestConfigurator()
+		public ClassConfigurator()
 		{
 			this.HasKey(i => i.Id);
-			this.Property(i => i.Name).HasMaxLength(50);
+			this.HasMany(a => a.Students).WithRequired(b => b.Class).HasForeignKey(b => b.ClassId);
 		}
 
 		public void AddTo(ConfigurationRegistrar registrar)

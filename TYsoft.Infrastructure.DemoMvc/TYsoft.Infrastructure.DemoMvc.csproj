@@ -120,13 +120,9 @@
       <Project>{882fe8e3-b149-42d1-9629-79bb1590d4ad}</Project>
       <Name>TYsoft.Infrastructure.Bootstrapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TYsoft.Infrastructure.Data.EF\TYsoft.Infrastructure.Data.EF.csproj">
-      <Project>{c6958a8f-b6da-487b-879b-66bfc761ac5e}</Project>
-      <Name>TYsoft.Infrastructure.Data.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TYsoft.Infrastructure.DemoDomain\TYsoft.Infrastructure.DemoDomain.csproj">
+    <ProjectReference Include="..\TYsoft.Infrastructure.DemoDomain\TYsoft.Infrastructure.DemoKernel.csproj">
       <Project>{304f55c5-3eff-434d-adfe-bbf663299f3d}</Project>
-      <Name>TYsoft.Infrastructure.DemoDomain</Name>
+      <Name>TYsoft.Infrastructure.DemoKernel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

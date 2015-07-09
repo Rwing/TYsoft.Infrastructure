@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,6 +13,11 @@ namespace TYsoft.Infrastructure.IoC
 {
 	internal class LightInjectContainer : ServiceContainer, IIoCContainer
 	{
+		public LightInjectContainer()
+			: base(new ContainerOptions { EnableVariance = false })
+		{
+			
+		}
 
 		public T Resolve<T>()
 		{
@@ -56,12 +62,20 @@ namespace TYsoft.Infrastructure.IoC
 
 		public void Initialize()
 		{
+			var assembieInConfig = ConfigurationManager.AppSettings["Infrastructure.RegisterAssemblies"];
+			if (!string.IsNullOrWhiteSpace(assembieInConfig))
+			{
+				foreach (var assembly in assembieInConfig.Split(','))
+				{
+					RegisterAssembly(assembly);
+				}
+			}
 			Register<IDbContext, EFDbContext>(new PerScopeLifetime());
 			Register(typeof(IRepository<>), typeof(EFRepository<>), new PerScopeLifetime());
 			this.EnableMvc();
 			var currentMvcAssembly = Assembly.Load(System.Web.Hosting.HostingEnvironment.SiteName);
 			this.RegisterControllers(currentMvcAssembly);
-			this.RegisterDomainConfigurator();
+			//this.RegisterDomainConfigurator();
 		}
 
 		private void RegisterDomainConfigurator()
@@ -80,7 +94,6 @@ namespace TYsoft.Infrastructure.IoC
 
 		}
 
-		// Works until app pool refresh
 		private static IEnumerable<Assembly> GetAssemblies()
 		{
 			var referencedPaths = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "bin", "*.dll");
