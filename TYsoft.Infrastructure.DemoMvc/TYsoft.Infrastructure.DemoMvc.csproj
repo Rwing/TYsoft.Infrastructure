@@ -124,6 +124,10 @@
       <Project>{c6958a8f-b6da-487b-879b-66bfc761ac5e}</Project>
       <Name>TYsoft.Infrastructure.Data.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TYsoft.Infrastructure.DemoDomain\TYsoft.Infrastructure.DemoDomain.csproj">
+      <Project>{304f55c5-3eff-434d-adfe-bbf663299f3d}</Project>
+      <Name>TYsoft.Infrastructure.DemoDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

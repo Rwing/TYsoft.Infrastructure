@@ -61,6 +61,35 @@ namespace TYsoft.Infrastructure.IoC
 			this.EnableMvc();
 			var currentMvcAssembly = Assembly.Load(System.Web.Hosting.HostingEnvironment.SiteName);
 			this.RegisterControllers(currentMvcAssembly);
+			this.RegisterDomainConfigurator();
+		}
+
+		private void RegisterDomainConfigurator()
+		{
+			var serviceType = typeof(IDomainConfigurator);
+			var assemblies = GetAssemblies();
+			var types = assemblies
+						.SelectMany(s => s.GetTypes())
+						.Where(serviceType.IsAssignableFrom)
+						.Select(t => t)
+						.Distinct();
+			types.ToList().ForEach(type =>
+			{
+				this.Register(serviceType, type);
+			});
+
+		}
+
+		// Works until app pool refresh
+		private static IEnumerable<Assembly> GetAssemblies()
+		{
+			var referencedPaths = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "bin", "*.dll");
+			foreach (var path in referencedPaths)
+			{
+				yield return AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(path));
+			}
+			//GetAssemblies获取到的程序集有时候少...不知道为什么....
+			//return AppDomain.CurrentDomain.GetAssemblies().Where(i => !i.FullName.StartsWith("System") && !i.FullName.StartsWith("Microsoft"));
 		}
 	}
 }
