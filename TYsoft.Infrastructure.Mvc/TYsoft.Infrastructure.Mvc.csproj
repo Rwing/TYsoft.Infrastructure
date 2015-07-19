@@ -94,10 +94,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TYsoft.EnShine.Domain\TYsoft.EnShine.Domain.csproj">
-      <Project>{f2efb0ce-7ef3-4703-9422-359a4ea2924d}</Project>
-      <Name>TYsoft.EnShine.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TYsoft.Infrastructure.Utility\TYsoft.Infrastructure.Utility.csproj">
       <Project>{1c5ba843-db96-4e18-ab0f-029289ec8b1d}</Project>
       <Name>TYsoft.Infrastructure.Utility</Name>

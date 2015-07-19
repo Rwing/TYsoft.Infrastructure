@@ -13,13 +13,14 @@ namespace TYsoft.Infrastructure.Data.EF
 	public class EFDbContext : DbContext, IDbContext
 	{
 		public EFDbContext()
-			: base("EFDbContext") { }
+			: this("EFDbContext") { }
 
 		public EFDbContext(string nameOrConnectionString)
-			: base(nameOrConnectionString) { }
-
-		public EFDbContext(DbConnection existingConnection)
-			: base(existingConnection, true) { }
+			: base(nameOrConnectionString)
+		{
+			//这句是为了引用一下Entityframework.SqlServer.dll，不然不会copy到bin目录，貌似是EF的bug
+			bool instanceExists = System.Data.Entity.SqlServer.SqlProviderServices.Instance != null;
+		}
 
 		public IEnumerable<IDomainConfigurator> DomainConfigurators { get; set; }
 

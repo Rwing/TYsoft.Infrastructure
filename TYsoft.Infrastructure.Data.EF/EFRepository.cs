@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -102,14 +103,19 @@ namespace TYsoft.Infrastructure.Data.EF
 			return this.GetItemsByPredicate(predicate, paths).FirstOrDefault();
 		}
 
-		public IEnumerable<TEntity> ExecuteSqlQuery(string sql, params object[] parameters)
+		public IEnumerable<TEntity> SqlQuery(string sql, params object[] parameters)
 		{
 			return DbContext.Database.SqlQuery<TEntity>(sql, parameters);
 		}
 
-		public IEnumerable<T> ExecuteSqlQuery<T>(string sql, params object[] parameters)
+		public IEnumerable<T> SqlQuery<T>(string sql, params object[] parameters)
 		{
 			return DbContext.Database.SqlQuery<T>(sql, parameters);
+		}
+
+		public IEnumerable<dynamic> SqlQueryDynamic(string sql, params object[] parameters)
+		{
+			return DbContext.Database.DynamicSqlQuery(sql, parameters);
 		}
 
 		public int Save()

@@ -23,7 +23,7 @@ namespace TYsoft.Infrastructure.DemoMvc.Controllers
 		{
 			var student = new Student()
 			{
-				Name = "zhangsan",
+				Name = "lisi",
 				Class = new Class()
 				{
 					Title = "3nian2ban"
@@ -35,6 +35,9 @@ namespace TYsoft.Infrastructure.DemoMvc.Controllers
 
 		public ActionResult Modify()
 		{
+			var result = StudentService.Test();
+			int a = 1 + result[0].classid;
+			var name = result[0].name + "wwo";
 			return View();
 		}
 	}

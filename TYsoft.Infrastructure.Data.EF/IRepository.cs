@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -85,7 +86,7 @@ namespace TYsoft.Infrastructure.Data.EF
 		/// <param name="sql"></param>
 		/// <param name="parameters"></param>
 		/// <returns></returns>
-		IEnumerable<TEntity> ExecuteSqlQuery(string sql, params object[] parameters);
+		IEnumerable<TEntity> SqlQuery(string sql, params object[] parameters);
 
 		/// <summary>
 		/// 执行sql语句
@@ -94,7 +95,9 @@ namespace TYsoft.Infrastructure.Data.EF
 		/// <param name="sql"></param>
 		/// <param name="parameters"></param>
 		/// <returns></returns>
-		IEnumerable<T> ExecuteSqlQuery<T>(string sql, params object[] parameters);
+		IEnumerable<T> SqlQuery<T>(string sql, params object[] parameters);
+
+		IEnumerable<dynamic> SqlQueryDynamic(string sql, params object[] parameters);
 
 		/// <summary>
 		/// 保存至数据库 返回影响行数

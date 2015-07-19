@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,6 +15,12 @@ namespace TYsoft.Infrastructure.Bussiness
 		public Student GetFirstStudentsWithClass()
 		{
 			return Repository.GetItemsByPredicate(i => i.Id == 1, i => i.Class).FirstOrDefault();
+		}
+
+		public List<dynamic> Test()
+		{
+			var result = Repository.SqlQueryDynamic("select name, classid from students").ToList();
+			return result;
 		}
 	}
 }

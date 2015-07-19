@@ -16,7 +16,7 @@ namespace TYsoft.Infrastructure.IoC
 		public LightInjectContainer()
 			: base(new ContainerOptions { EnableVariance = false })
 		{
-			
+
 		}
 
 		public T Resolve<T>()
@@ -73,24 +73,25 @@ namespace TYsoft.Infrastructure.IoC
 			Register<IDbContext, EFDbContext>(new PerScopeLifetime());
 			Register(typeof(IRepository<>), typeof(EFRepository<>), new PerScopeLifetime());
 			this.EnableMvc();
-			var currentMvcAssembly = Assembly.Load(System.Web.Hosting.HostingEnvironment.SiteName);
-			this.RegisterControllers(currentMvcAssembly);
-			//this.RegisterDomainConfigurator();
+			//var currentMvcAssembly = Assembly.Load(System.Web.Hosting.HostingEnvironment.SiteName);
+			//this.RegisterControllers(currentMvcAssembly);
+			var currentMvcAssembly = GetCurrentMvcAssembly();
+			if (currentMvcAssembly!=null)
+			{
+				this.RegisterControllers(currentMvcAssembly);
+			}
+			
 		}
 
-		private void RegisterDomainConfigurator()
+		private Assembly GetCurrentMvcAssembly()
 		{
-			var serviceType = typeof(IDomainConfigurator);
-			var assemblies = GetAssemblies();
-			var types = assemblies
-						.SelectMany(s => s.GetTypes())
-						.Where(serviceType.IsAssignableFrom)
-						.Select(t => t)
-						.Distinct();
-			types.ToList().ForEach(type =>
-			{
-				this.Register(serviceType, type);
-			});
+			var serviceType = typeof(System.Web.HttpApplication);
+			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			var mvc = assemblies
+				.SelectMany(s => s.GetTypes())
+				.Where(t => serviceType.IsAssignableFrom(t) && !t.AssemblyQualifiedName.StartsWith("System"))
+				.Select(t => t.Assembly);
+			return mvc.FirstOrDefault();
 
 		}
 
