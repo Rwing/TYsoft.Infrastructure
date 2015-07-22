@@ -86,7 +86,9 @@ namespace TYsoft.Infrastructure.IoC
 		private Assembly GetCurrentMvcAssembly()
 		{
 			var serviceType = typeof(System.Web.HttpApplication);
-			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			//var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			//GetAssemblies方法有时拿不全程序集
+			var assemblies = this.AssemblyLoader.Load("*.dll");
 			var mvc = assemblies
 				.SelectMany(s => s.GetTypes())
 				.Where(t => serviceType.IsAssignableFrom(t) && !t.AssemblyQualifiedName.StartsWith("System"))
